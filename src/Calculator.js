@@ -4,19 +4,28 @@ export default class Calculator extends React.Component{
 
     state={
         val: '',
+        sign: '', 
+        val2: '',
     };
 
     clickingNumbers = (num) => {
         this.setState({
             val: this.state.val + num
         })
-      console.log(`you clicked on ${num}`)
     };
+
+    equationSign = (eq) => {
+        this.setState({
+            sign: eq
+        })
+    }
 
 
     clearHandler = () => {
         this.setState({
-            val: ''
+            val: '',
+            sign: '',
+            val2: ''
         })
     };
 
@@ -38,11 +47,12 @@ export default class Calculator extends React.Component{
                 <button name='0' onClick={(e) => this.clickingNumbers(e.target.name)}> 0 </button>
                 <br></br>
 
-                <button> + </button>
-                <button> = </button>
+                <button name='+' onClick={(e) => this.equationSign(e.target.name)}> + </button>
+                <button name='-' onClick={(e) => this.equationSign(e.target.name)}> - </button>
+                <button name='='> = </button>
                 <button onClick={() => this.clearHandler()}> CLE </button>
 
-        <h1> {this.state.val} </h1>
+    <h1> {this.state.val} {this.state.sign}</h1>
 
             </div>
         )
