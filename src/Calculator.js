@@ -5,11 +5,11 @@ import Keypad from './Keypad';
 export default class Calculator extends React.Component{
 
     state={
-        val: '',
+        val: '', // we don't know how many elements its going to have -  
     };
 
-    pressingButtons = (buttonName) => {
-        if(buttonName === '='){
+    pressingButtons = (buttonName) => { // all buttons behave the same - until you get to their name!
+        if(buttonName === '='){ 
             this.calculate()
         }else{
         this.setState({
@@ -18,19 +18,23 @@ export default class Calculator extends React.Component{
     }
     };
 
-    calculate = () => {
-        
+    calculate = () => {  // we call this method inside of the pressingButtons Function
         const calculated = this.state.val
 
         this.setState({
-            val: eval(calculated)
+            val: eval(calculated) // eval() - IMPORTANT when creating a calculator LITERALLY turns a string of numbers and symbols and calculates them
         })
     };
 
+    backSpace = () => { // we use the JavaScript Function slice()
+        this.setState({
+            val: this.state.val.slice(0, -1) // we want to take the last element that was enter away
+        })
+    };
 
     clearHandler = () => {
-        this.setState({
-            val: ''
+        this.setState({ // literally returns your state to what it was
+            val: '' 
         })
     };
 
@@ -45,9 +49,9 @@ export default class Calculator extends React.Component{
                 />
                 
                 <Keypad 
-                pressingButtons={this.pressingButtons} 
-                equationSign={this.equationSign} 
+                pressingButtons={this.pressingButtons}  
                 clearHandler={this.clearHandler}
+                backSpace={this.backSpace}
                 />
 
 
@@ -55,4 +59,4 @@ export default class Calculator extends React.Component{
         )
     }
 
-}
+};

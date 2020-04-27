@@ -9,7 +9,7 @@ export default class Keypad extends React.Component{
 
     render(){
 
-        const buttonSign = ['1','2','3','4','5','6','7','8','9','0', '+', '-', '*', '/', '*', '=' ]
+        const buttonSign = ['1','2','3','4','5','6','7','8','9','0', '+', '-', '*', '/', '=' ]
 
         const creatingButtons = () => buttonSign.map( sign => {
            return( <button name={sign} onClick={this.buttonPressed}> {sign} </button> )
@@ -19,6 +19,7 @@ export default class Keypad extends React.Component{
             <div>
                 {creatingButtons()}
                 <button onClick={() => this.props.clearHandler()}> CLE </button>
+                <button onClick={() => this.props.backSpace()}> BACK </button>
             </div>
         )
     }
