@@ -1,4 +1,5 @@
 import React from 'react';
+import '../Style/Keypad.css';
 
 export default class Keypad extends React.Component{
 
@@ -12,7 +13,7 @@ export default class Keypad extends React.Component{
         const buttonSign = ['1','2','3','4','5','6','7','8','9','0', '+', '-', '*', '/', '=' ]
 
         const creatingButtons = () => buttonSign.map( sign => {
-           return( <button name={sign} onClick={this.buttonPressed}> {sign} </button> )
+           return( <button className="button" name={sign} onClick={this.buttonPressed}> {sign} </button> )
         })
         
         return(

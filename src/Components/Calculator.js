@@ -1,6 +1,7 @@
 import React from 'react';
 import Result from './Result'
 import Keypad from './Keypad';
+import '../Style/Calculator.css';
 
 export default class Calculator extends React.Component{
 
@@ -42,7 +43,7 @@ export default class Calculator extends React.Component{
     render(){
 
         return(
-            <div style={{textAlign: 'center'}}>
+            <div style={{textAlign: 'center'}} className="calculator">
 
                 <Result 
                 val={this.state.val} 
